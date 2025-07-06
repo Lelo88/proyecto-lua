@@ -4,6 +4,9 @@ from .cart_utils import agregar_producto_al_carrito, obtener_items_del_carrito, 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+def inicio(request):
+    return render(request, 'tienda/inicio.html')
+
 @login_required
 def vista_productos(request):
     productos = Producto.objects.all()
@@ -29,11 +32,10 @@ def ver_carrito(request):
 @login_required
 def confirmar_carrito(request):
     if request.method == 'POST':
-        metodo_pago = MetodoPago.objects.first()  # podés hacer más dinámico esto
+        metodo_pago = MetodoPago.objects.first()
         try:
             orden = confirmar_orden(request.user, metodo_pago)
             messages.success(request, f"Compra realizada. Orden #{orden.id}")
         except Exception as e:
             messages.error(request, f"Error: {str(e)}")
-    return redirect('ver_carrito')
-
+    return redirect('carrito')
