@@ -1,0 +1,35 @@
+<!-- tienda/templates/tienda/productos.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos - Lúa</title>
+</head>
+<body>
+    <h1>Catálogo de Productos</h1>
+
+    {% for message in messages %}
+        <p style="color:green;">{{ message }}</p>
+    {% endfor %}
+
+    <ul>
+        {% for producto in productos %}
+            <li>
+                <strong>{{ producto.nombre }}</strong><br>
+                Precio: ${{ producto.precio }}<br>
+                Stock: {{ producto.stock }}<br>
+                <form method="post" action="{% url 'agregar_al_carrito' producto.id %}">
+                    {% csrf_token %}
+                    <input type="number" name="cantidad" value="1" min="1" max="{{ producto.stock }}">
+                    <button type="submit">Agregar al carrito</button>
+                </form>
+            </li>
+            <hr>
+        {% empty %}
+            <li>No hay productos disponibles.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'ver_carrito' %}">Ver carrito</a>
+</body>
+</html>
