@@ -1,0 +1,20 @@
+body {
+    padding-top: 70px;
+}
+
+.hero {
+    background-image: url('https://images.unsplash.com/photo-1562157873-818bc0726f62');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h1 {
+    background-color: rgba(0,0,0,0.5);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+}

@@ -1,0 +1,14 @@
+{% extends "tienda/base.html" %}
+
+{% block title %}Inicio - Lúa{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Bienvenido a Lúa</h1>
+</div>
+
+<div class="mt-5 text-center">
+    <p class="lead">Descubrí nuestras bolsas con diseño único, hechas con estilo y dedicación.</p>
+    <a href="{% url 'productos' %}" class="btn btn-primary btn-lg">Ver catálogo</a>
+</div>
+{% endblock %}
